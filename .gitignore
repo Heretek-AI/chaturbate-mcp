@@ -1,0 +1,17 @@
+# Secrets / local data — NEVER commit
+.env
+.env.*
+!.env.example
+review/
+mitm_mcp_traffic.db
+
+# Python / uv
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+dist/
+build/

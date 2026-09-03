@@ -1,0 +1,40 @@
+[project]
+name = "chaturbate-mcp"
+version = "0.1.0"
+description = "Read-only MCP server exposing the Chaturbate room-stats, affiliate-earnings, and events APIs as tools."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = [
+  "mcp>=2.1.1,<3",          # 2.x renamed FastMCP -> MCPServer
+  "httpx2>=2.12.0",         # Pydantic continuation of httpx; already a dep of mcp 2.x
+  "python-dotenv>=1.0.1",
+]
+
+[project.scripts]
+chaturbate-mcp = "chaturbate_mcp.server:main"
+
+[dependency-groups]
+dev = [
+  "pytest>=8.0",
+  "pytest-asyncio>=0.24",
+  "ruff>=0.9",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/chaturbate_mcp"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint.isort]
+split-on-trailing-comma = false

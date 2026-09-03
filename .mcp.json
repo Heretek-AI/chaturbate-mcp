@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "chaturbate": {
+      "type": "stdio",
+      "command": "uv",
+      "args": ["run", "--project", "${CLAUDE_PROJECT_DIR:-.}", "chaturbate-mcp"],
+      "timeout": 120000
+    }
+  }
+}
