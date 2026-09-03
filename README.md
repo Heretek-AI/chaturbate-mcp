@@ -95,6 +95,30 @@ never prints or persists them:
 uv run python scripts/smoke_test.py
 ```
 
+## Releasing (PyPI)
+
+This package publishes to PyPI from GitHub Actions via a **Trusted Publisher (OIDC)** — no API
+tokens or passwords are used.
+
+To cut a release:
+
+1. Bump `version` in `pyproject.toml`, commit, and push.
+2. Tag and push the tag (must match the new version):
+   `git tag v0.1.0 && git push origin v0.1.0`
+3. `.github/workflows/publish-python.yml` runs the offline tests, builds the wheel + sdist, smoke-tests
+   the install, then publishes to `https://pypi.org/project/chaturbate-mcp`.
+
+The PyPI trusted publisher is registered once at https://pypi.org/manage/account/publishing/ with
+exactly these values (the workflow name and environment must match the file/job in this repo):
+
+| Field | Value |
+|---|---|
+| PyPI Project Name | `chaturbate-mcp` |
+| Owner | `Heretek-AI` |
+| Repository | `chaturbate-mcp` |
+| Workflow name | `publish-python.yml` |
+| Environment | `pypi` |
+
 ## Security notes
 
 - `review/` (a saved copy of your authtoken page — contains live tokens) and

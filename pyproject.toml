@@ -11,6 +11,10 @@ dependencies = [
   "python-dotenv>=1.0.1",
 ]
 
+[project.urls]
+Homepage = "https://github.com/Heretek-AI/chaturbate-mcp"
+Repository = "https://github.com/Heretek-AI/chaturbate-mcp"
+
 [project.scripts]
 chaturbate-mcp = "chaturbate_mcp.server:main"
 
